@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ostdeutschland Guns and Ammo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(45deg, #8B0000, #DC143C);
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(255,255,255,0.1) 2px,
+                rgba(255,255,255,0.1) 4px
+            );
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        h1 {
+            font-size: 3em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            color: #DC143C;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 2px solid #DC143C;
+            padding-bottom: 10px;
+        }
+        
+        .job-posting {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes discord-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(114, 137, 218, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(114, 137, 218, 0.8); }
+        }
+        
+        .job-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        .requirements {
+            text-align: left;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .requirements ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .requirements li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .requirements li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+        }
+        
+        .contact-info {
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+            border-color: #DC143C;
+        }
+        
+        .warning {
+            background: linear-gradient(45deg, #FF4500, #FF6347);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .job-title { font-size: 2em; }
+            .container { padding: 10px; }
+            .section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔫 OSTDEUTSCHLAND GUNS & AMMO 🔫</h1>
+            <p class="subtitle">Ihr vertrauensvoller Partner für Sicherheit und Ausrüstung</p>
+        </header>
+
+        <div class="job-posting">
+            <h2 class="job-title">🚨 MITARBEITER GESUCHT! 🚨</h2>
+            <p style="font-size: 1.3em; margin-bottom: 20px;">
+                Verstärke unser Team bei Ostdeutschland Guns & Ammo!
+            </p>
+            
+            <div class="requirements">
+                <h3 style="color: #FFD700; margin-bottom: 15px;">Was wir suchen:</h3>
+                <ul>
+                    <li>Zuverlässige und vertrauensvolle Persönlichkeit</li>
+                    <li>Erfahrung im Einzelhandel oder Kundenservice</li>
+                    <li>Kenntnisse über Waffen und Ausrüstung von Vorteil</li>
+                    <li>Teamfähigkeit und Kommunikationsstärke</li>
+                    <li>Pünktlichkeit und Flexibilität</li>
+                    <li>Sauberes polizeiliches Führungszeugnis</li>
+                </ul>
+            </div>
+            
+            <div class="requirements">
+                <h3 style="color: #FFD700; margin-bottom: 15px;">Was wir bieten:</h3>
+                <ul>
+                    <li>Attraktive Bezahlung + Provision</li>
+                    <li>Flexible Arbeitszeiten</li>
+                    <li>Umfassende Einarbeitung</li>
+                    <li>Familiäre Arbeitsatmosphäre</li>
+                    <li>Weiterbildungsmöglichkeiten</li>
+                    <li>Mitarbeiterrabatte</li>
+                </ul>
+            </div>
+            
+            <div class="contact-info">
+                <h3 style="color: #FFD700; margin-bottom: 15px;">📞 Bewerbung & Kontakt:</h3>
+                <p><strong>Ladeninhaber:</strong> Red_bull und Kuschelanimal</p>
+                <p><strong>Discord Sever (join code):</strong> ZpAvD7ECWp </p>
+                <p style="margin-top: 15px; font-style: italic;">
+                    Bewerbe dich noch heute! Wir freuen uns auf dich!
+                </p>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3 style="color: #DC143C; margin-bottom: 15px;">🏪 Über uns</h3>
+                <p>Seit über 15 Jahren sind wir Ihr zuverlässiger Partner in Sachen Sicherheitsausrüstung und Waffen. Unser erfahrenes Team berät Sie kompetent und diskret.</p>
+            </div>
+            
+            <div class="card">
+                <h3 style="color: #DC143C; margin-bottom: 15px;">⚔️ Unser Sortiment</h3>
+                <p>Von Jagdwaffen über Sportschießausrüstung bis hin zu Sicherheitstechnik - bei uns finden Sie alles für Ihre Bedürfnisse in höchster Qualität.</p>
+            </div>
+            
+            <div class="card">
+                <h3 style="color: #DC143C; margin-bottom: 15px;">🎯 Service</h3>
+                <p>Individuelle Beratung, professionelle Wartung und schnelle Reparaturen. Ihr Vertrauen ist unser größtes Kapital.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🕐 Ladenzeiten</h2>
+            <div style="text-align: center;">
+                <div style="background: linear-gradient(45deg, #228B22, #32CD32); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
+                    <h3 style="color: white; font-size: 1.5em; margin-bottom: 15px;">🌟 IMMER GEÖFFNET! 🌟</h3>
+                    <p style="font-size: 1.2em; color: white; margin-bottom: 10px;">
+                        <strong>24/7 - Solange der RP-Server online ist!</strong>
+                    </p>
+                    <p style="color: #E0FFE0; font-size: 1em;">
+                        Unser Laden hat durchgehend geöffnet, wenn der Server läuft.
+                    </p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                    <h4 style="color: #DC143C; margin-bottom: 15px;">📋 Service-Zeiten:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                            <strong style="color: #90EE90;">Verkauf:</strong><br>
+                            Rund um die Uhr
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                            <strong style="color: #90EE90;">Beratung:</strong><br>
+                            Bei Mitarbeiter-Anwesenheit
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                            <strong style="color: #90EE90;">Service:</strong><br>
+                            Nach Vereinbarung
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning">
+            ⚠️ WICHTIGER HINWEIS ⚠️<br>
+            Dies ist eine fiktive Roleplay-Webseite für Gaming-Zwecke.<br>
+            Alle Angaben sind nicht real und dienen nur der Unterhaltung!
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Ostdeutschland Guns & Ammo - Roleplay Shop</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                "Qualität, Vertrauen und Service seit 2009"
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Einfache Interaktivität
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.05) rotateY(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1) rotateY(0deg)';
+            });
+        });
+
+        // Dynamischer Titel-Effekt
+        const title = document.querySelector('h1');
+        let titleText = title.textContent;
+        title.addEventListener('mouseenter', () => {
+            title.style.animation = 'none';
+            title.style.transform = 'scale(1.1)';
+        });
+        
+        title.addEventListener('mouseleave', () => {
+            title.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
